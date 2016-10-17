@@ -1,0 +1,19 @@
+{
+  "name": "w11hangman",
+  "version": "1.0.0",
+  "description": "packages for hangman",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mlin2814/w11hangman.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mlin2814/w11hangman/issues"
+  },
+  "homepage": "https://github.com/mlin2814/w11hangman#readme"
+}
