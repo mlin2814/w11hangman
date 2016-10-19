@@ -1,11 +1,11 @@
-var game = require('game.js');// require prompt to use to make the game 
+var main = require('game.js');// require prompt to use to make the game 
 
 //require the objects/exports you will use
 
 prompt.start();
 
 game = {
-	wordBank : // create or import a list of words
+	wordBank : main.game // create or import a list of words
 	wordsWon : // count of words Found
 	guessesRemaining : 10, //per word
 	currentWrd : null, //the word object
