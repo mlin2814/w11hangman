@@ -1,47 +1,45 @@
-var wordjs = require('letter.js');// require your letter objects
+var letts = require('./letter.js');// require your letter objects
 
 var Word = function(wrd){
-// property to store the string word
-	this.gameWord = [""];
-// a collection of letter objects
-	this.userLetts = [""];
-// property is the word found?
-	this.wordFound = [];
+	var userWord = wrd;
+	var lettObjs = [];
+	var found = false;
+		this.getLetts = function() {
+				for (i=0; i<userWord.length; i++){
+					lettObjs.push(new letter());
+				}
+			};		
+		this.didWeFindTheWord = function() {
+				for (i=0; i<lettObjs.length; i++){
+					if(!lettObjs[i].appear){
+						return this.found;
+					}
+				}
+				this.found = true;
+				return this.found;
+			};
 
-	this.getLetts = function() {
-// populate the collection above with new Letter objects
-		this.userLetts
-	};
-	
-	//found the current word
-	this.didWeFindTheWord = function() {
-		if (this.wordFound = this.gameWord){
-			return = true;
-		//sets this.found in the word object to true or false if all letter objects have a true value in their appear property
-		};
+		this.checkIfLetterFound = function(guessLetter) {
+				var whatToReturn = false;
+				for(i=0; i<lettObjs.length; i++){
+					if (userWord.charAt(i) === guessLetter){
+						lettObjs[i].letter = guessLetter;
+						lettObjs[i].appear = true;
+						whatToReturn = true;
+					}
+				}
+				return whatToReturn;
+			};
 
-		return this.found;
-	};
+		this.wordRender = function() {
+				var str = "";
+				for(i=0; i<lettObjs.length; i++){
+					str += lettObjs[i].letter;
+				}
+				return str;
+			};
+};
 
-	this.checkIfLetterFound = function(guessLetter) {
-
-// iterate through the collection of letter Objects
-	for (var i = 0; i < userLetts.length; i++) {
-		if (userLetts = process.argv[2]){
-			str.replace("_", process.argv[2]);
-		}
-	};
-// if guessLetter matches Letter property, the letter object should be shown
-		return whatToReturn;
-	};
-
-	this.wordRender = function() {
-// render the word based on if letters are found or not found
-		return str;
-	};
-}
-
-// export to use in main.js
 exports.word = {
 
-}
+};

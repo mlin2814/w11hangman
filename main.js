@@ -1,61 +1,64 @@
-var main = require('game.js');// require prompt to use to make the game 
+//Sorry you had to look at this awful work from me, if you can even call it work.
+//This was the most mind-boggling assignment yet, and just made me mentally shut down with how incomprehensible it was.
+//None of this is functioning, and I don't know what would be needed to get it "working".
+//I would literally have to be walked through every step to get close to understanding this. Way more time than anyone could reasonably take time to help me with.
 
-//require the objects/exports you will use
+var inquirer = require('inquirer');
+var game = require('./game.js');
+var Word = require('./word.js');
 
-prompt.start();
 
 game = {
-	wordBank : main.game // create or import a list of words
-	wordsWon : // count of words Found
-	guessesRemaining : 10, //per word
-	currentWrd : null, //the word object
-	startGame : function (wrd){
-		//make sure the user has 10 guesses
-
-		//get a random word from the array
-
-		//populate currentWrd (made from Word constructor function) object with letters
-
+	// wordBank : 
+	wordsWon: 0, 
+	guessesRemaining : 10, 
+	currentWrd : null, 
+	lettersGuessed : "",
+	startGame : function(wrd){
+		this.resetGuessesRemaining();
+		this.currentWrd = new Word(wrd);
 		this.keepPromptingUser();
 
 	}, 
 	resetGuessesRemaining : function(){
-    // reset guess count for new game	
+	this.guessesRemaining = 10;
+	this.lettersGuessed = "";
 	},
 	keepPromptingUser : function(){
 		var self = this;
 
 		prompt.get(['guessLetter'], function(err, result) {
-		    // result is an object like this: { guessLetter: 'f' }
-		    //console.log(result);
-		    
-			  // console log the letetr you chose
+		   
+			console.log(result);
+		    this.lettersGuessed += result + " ";
 
-		    //this checks if the letter was found and if it is then it sets that specific letter in the word to be found
-
-		    //if the user guessed incorrectly minus the number of guesses they have left
-				// and console.log if they were incorrect or correct
-		    	
-				//check if you win only when you are right
-        //end game
-			 
+			var guess = currentWrd.checkIfLetterFound(result);
+			if (!guess){
+				this.guessesRemaining--;
+			}
+		    console.log(guess.toString());
+			if(guess){
+				if(currentWrd.didWeFindTheWord()){
+					console.log("you did the thing!");
+					this.wordsWon++;
+					return;
+				}
+			}
 		    
-		    // display the user how many guesses remaining
-			
-				// render the word 
-				
-				// display letters the user has guessed
-
-			  // if user has remaining guesses and Word isn't found
-			
-				// if user has no guesses left, show them the word and tell them they lost
-			
-				// else show the user word and rendered
-		    
+			console.log(this.guessesRemaining);
+			console.log(currentWrd.wordRender());
+			console.log(this.lettersGuessed);
+			if (this.guessesRemaining>0){
+				this.keepPromptingUser();
+			} else {
+				console.log("Keep trying!");
+			}    
 		});
 	}
 
 
 };
 
-game.startGame();
+game.startGame("this project made me internally cry");
+
+
