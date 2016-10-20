@@ -40,6 +40,4 @@ var Word = function(wrd){
 			};
 };
 
-exports.word = {
-
-};
+module.exports = Word;
