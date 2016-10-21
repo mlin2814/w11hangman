@@ -1,7 +1,3 @@
-//Sorry you had to look at this awful work from me, if you can even call it work. I'd lie to think of it as a dumpster fire.
-//This was the most mind-boggling assignment yet, and just made me mentally shut down with how incomprehensible it was.
-//I would literally have to be walked through every step to get close to understanding this. Way more time than anyone could reasonably take time to help me with.
-
 
 var inquirer = require('inquirer');
 var prompt = require('prompt');
